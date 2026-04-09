@@ -553,136 +553,6 @@
             font-weight: 600;
         }
 
-        /* Contact */
-        .contact {
-            padding: 100px 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-        }
-
-        .contact-info h2 {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 24px;
-        }
-
-        .contact-info p {
-            font-size: 18px;
-            color: var(--text-light);
-            margin-bottom: 40px;
-        }
-
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .contact-method-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--bg-light);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .contact-method-text h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .contact-method-text p {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text);
-            margin: 0;
-        }
-
-        .contact-form {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-        }
-
-        .form-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 8px;
-        }
-
-        .form-subtitle {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-bottom: 32px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 15px;
-            font-family: inherit;
-            transition: border-color 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 16px;
-            font-size: 16px;
-        }
-
         /* Footer */
         footer {
             background: var(--bg-dark);
@@ -748,8 +618,7 @@
         @media (max-width: 1024px) {
             .hero-grid,
             .why-grid,
-            .oem-grid,
-            .contact-grid {
+            .oem-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -782,10 +651,6 @@
             }
 
             .oem-services {
-                grid-template-columns: 1fr;
-            }
-
-            .form-row {
                 grid-template-columns: 1fr;
             }
 
@@ -1110,12 +975,20 @@
             <div class="header-inner">
                 <div style="display: flex; align-items: center; gap: 16px;">
                     <div class="logo">HUM<span>I</span>S</div>
-                    <a href="https://wa.me/8618925495681" target="_blank" style="display: flex; align-items: center; gap: 8px; background: #25D366; color: white; padding: 8px 16px; border-radius: 24px; text-decoration: none; font-weight: 500; font-size: 14px; transition: transform 0.2s, box-shadow 0.2s;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                        </svg>
-                        <span>WhatsApp</span>
-                    </a>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <a href="#" onclick="alert('WeChat: 13798788072'); return false;" style="display: flex; align-items: center; gap: 6px; background: #07C160; color: white; padding: 8px 14px; border-radius: 24px; text-decoration: none; font-weight: 500; font-size: 13px; transition: transform 0.2s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.6c0 2.212 1.17 4.227 3.066 5.693-.188.703-.485 1.775-.485 1.775s1.886-.503 3.403-.894c.407.082.824.138 1.247.183.137-.012.271-.029.406-.045-.137.016-.272.033-.406.045.137-.012.271-.029.406-.045-.137.016-.272.033-.406.045.137-.012.271-.029.406-.045-.137.016-.272.033-.406.045.137-.012.271-.029.406-.045-.137.016-.272.033-.406.045 4.298.058 7.891-2.747 8.732-6.359.24-1.031.254-2.104.045-3.131-.535-2.629-2.815-4.822-5.614-5.593-.911-.254-1.868-.375-2.803-.375zm-2.69 4.031c.633 0 1.146.513 1.146 1.146s-.513 1.146-1.146 1.146-1.146-.513-1.146-1.146.513-1.146 1.146-1.146zm5.382 0c.633 0 1.146.513 1.146 1.146s-.513 1.146-1.146 1.146-1.146-.513-1.146-1.146.513-1.146 1.146-1.146zm8.598 3.895c-.857-.063-1.756.013-2.623.242-1.16.306-2.216.836-3.11 1.535-.429.336-.818.715-1.167 1.128-.347.411-.655.856-.92 1.327-.285.505-.514 1.039-.691 1.592-.275.859-.398 1.767-.367 2.665.011.314.04.627.088.937.01.065.021.131.033.196.044.249.097.496.159.741.057.224.122.446.195.665.061.183.129.364.201.543.024.06.049.119.074.178.092.213.192.423.299.629.072.139.148.276.227.411.08.136.164.27.252.401.05.074.101.147.154.219.08.108.164.214.25.318.043.052.087.103.132.154.094.108.192.213.293.316.049.05.099.099.15.148.108.105.22.207.335.306.04.034.081.067.122.1.116.093.236.183.359.269.033.023.066.046.1.068.127.086.258.168.392.246l.103.06c.139.08.282.156.427.228.032.016.064.032.097.047.15.074.304.143.46.207.03.012.06.024.091.035.163.065.33.125.5.178l.088.027c.176.053.356.099.539.137l.078.017c.19.039.383.07.579.093.024.003.049.005.073.007.199.024.401.04.606.047h.076c.209.007.42.004.633-.009l.058-.004c.215-.015.432-.041.65-.079l.05-.009c.221-.04.444-.091.667-.154 1.152-.327 2.168-.891 2.999-1.614.418-.364.79-.768 1.112-1.203.319-.431.59-.895.809-1.38.223-.495.395-1.014.514-1.547.121-.544.186-1.101.195-1.661.009-.566-.034-1.133-.128-1.691-.095-.562-.243-1.116-.442-1.65-.2-.538-.452-1.057-.752-1.546-.302-.491-.654-.953-1.051-1.377-.4-.426-.845-.814-1.328-1.154-.486-.342-1.01-.636-1.564-.875-.556-.24-1.141-.424-1.746-.546-.302-.061-.609-.106-.919-.135-.155-.014-.311-.024-.467-.03-.078-.003-.156-.005-.234-.006zm-2.414 3.622c.424 0 .768.344.768.768s-.344.768-.768.768-.768-.344-.768-.768.344-.768.768-.768zm4.828 0c.424 0 .768.344.768.768s-.344.768-.768.768-.768-.344-.768-.768.344-.768.768-.768z"/>
+                            </svg>
+                            <span>微信</span>
+                        </a>
+                        <a href="https://wa.me/8618925495681" target="_blank" style="display: flex; align-items: center; gap: 6px; background: #25D366; color: white; padding: 8px 14px; border-radius: 24px; text-decoration: none; font-weight: 500; font-size: 13px; transition: transform 0.2s;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
                 </div>
                 <nav>
                         <a href="#featured">Y69 Strike</a>
@@ -1492,93 +1365,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                     </svg>
                     <p>Your Brand<br>Our Manufacturing</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Let's Talk Business</h2>
-                    <p>Whether you're looking for HUMIS branded products or OEM partnership, we'd love to hear from you. Get in touch for pricing and samples.</p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="contact-method-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
-                            </div>
-                            <div class="contact-method-text">
-                                <h4>WeChat / 微信</h4>
-                                <p>13798788072</p>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <div class="contact-method-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <div class="contact-method-text">
-                                <h4>Location</h4>
-                                <p>Dongguan, Guangdong, China</p>
-                                <p style="font-size: 14px; color: var(--text-light);">No.54, Hugong Road, Dongguan, China</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3 class="form-title">Request a Quote</h3>
-                    <p class="form-subtitle">Fill in your details and we'll get back to you within 24 hours.</p>
-                    <form id="quoteForm" action="https://formsubmit.co/dgyongxin936@163.com" method="POST">
-                        <input type="hidden" name="_subject" value="New Inquiry from HUMIS Website">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="company">Company</label>
-                                <input type="text" id="company" name="company">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">WhatsApp / Phone</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="interest">I'm interested in</label>
-                            <select id="interest" name="interest">
-                                <option value="humis-products">HUMIS Branded Products</option>
-                                <option value="oem">OEM / ODM Partnership</option>
-                                <option value="both">Both</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell us about your requirements, target quantity, etc."></textarea>
-                        </div>
-                        <button type="submit" class="btn form-submit">
-                            Send Inquiry
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
