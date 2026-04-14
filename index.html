@@ -1078,8 +1078,8 @@
                     </div>
                 </div>
                 <div class="hero-carousel">
-                    <button class="carousel-arrow carousel-prev" onclick="moveCarousel(-1)">&#10094;</button>
-                    <button class="carousel-arrow carousel-next" onclick="moveCarousel(1)">&#10095;</button>
+                    <button class="carousel-arrow carousel-prev" id="carouselPrev">&lsaquo;</button>
+                    <button class="carousel-arrow carousel-next" id="carouselNext">&rsaquo;</button>
                     <div class="carousel-viewport">
                         <div class="carousel-track" id="carouselTrack">
                             <div class="carousel-slide"><img src="images/YD69.jpg" alt="Y69 Electric Strike"></div>
@@ -1087,10 +1087,10 @@
                             <div class="carousel-slide"><img src="images/YD69-SET.jpg" alt="Y69 Full Set"></div>
                         </div>
                     </div>
-                    <div class="carousel-dots">
-                        <span class="carousel-dot active" onclick="goToSlide(0)"></span>
-                        <span class="carousel-dot" onclick="goToSlide(1)"></span>
-                        <span class="carousel-dot" onclick="goToSlide(2)"></span>
+                    <div class="carousel-dots" id="carouselDots">
+                        <span class="carousel-dot active"></span>
+                        <span class="carousel-dot"></span>
+                        <span class="carousel-dot"></span>
                     </div>
                 </div>
             </div>
@@ -1456,8 +1456,8 @@
         });
         
         // Hero carousel
-        let currentSlide = 0;
-        const totalSlides = 3;
+        var currentSlide = 0;
+        var totalSlides = 3;
 
         function moveCarousel(dir) {
             currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
@@ -1470,15 +1470,35 @@
         }
 
         function updateCarousel() {
-            const track = document.getElementById('carouselTrack');
+            var track = document.getElementById('carouselTrack');
+            if (!track) return;
             track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
-            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-            });
+            var dots = document.querySelectorAll('.carousel-dot');
+            for (var i = 0; i < dots.length; i++) {
+                if (i === currentSlide) {
+                    dots[i].classList.add('active');
+                } else {
+                    dots[i].classList.remove('active');
+                }
+            }
         }
 
+        // Bind events immediately
+        (function() {
+            var prevBtn = document.getElementById('carouselPrev');
+            var nextBtn = document.getElementById('carouselNext');
+            if (prevBtn) prevBtn.onclick = function() { moveCarousel(-1); };
+            if (nextBtn) nextBtn.onclick = function() { moveCarousel(1); };
+            var dots = document.querySelectorAll('.carousel-dot');
+            for (var i = 0; i < dots.length; i++) {
+                (function(index) {
+                    dots[index].onclick = function() { goToSlide(index); };
+                })(i);
+            }
+        })();
+
         // Auto-play every 4s
-        setInterval(() => moveCarousel(1), 4000);
+        setInterval(function() { moveCarousel(1); }, 4000);
     </script>
 
     <!-- Quote Modal -->
