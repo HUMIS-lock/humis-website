@@ -221,19 +221,22 @@
             overflow: hidden;
             border-radius: 10px;
             background: #f8f9fa;
+            position: relative;
         }
 
         .carousel-track {
-            display: flex;
-            transition: transform 0.4s ease;
+            /* track stays visible, slides toggle display */
         }
 
         .carousel-slide {
-            flex: 0 0 auto;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             padding: 20px;
+        }
+
+        .carousel-slide.active {
+            display: flex;
         }
 
         .carousel-slide img {
@@ -245,6 +248,7 @@
         .carousel-arrow {
             position: absolute;
             top: 45%;
+            transform: translateY(-50%);
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -1079,17 +1083,17 @@
                 <div class="hero-carousel">
                     <div class="carousel-viewport">
                         <div class="carousel-track" id="carouselTrack">
-                            <div class="carousel-slide"><img src="images/YD69.jpg" alt="Y69 Electric Strike"></div>
-                            <div class="carousel-slide"><img src="images/YD69-2.jpg" alt="Y69 Detail"></div>
-                            <div class="carousel-slide"><img src="images/YD69-SET.jpg" alt="Y69 Full Set"></div>
+                            <div class="carousel-slide active" data-slide="0"><img src="images/YD69.jpg" alt="Y69 Electric Strike"></div>
+                            <div class="carousel-slide" data-slide="1"><img src="images/YD69-2.jpg" alt="Y69 Detail"></div>
+                            <div class="carousel-slide" data-slide="2"><img src="images/YD69-SET.jpg" alt="Y69 Full Set"></div>
                         </div>
                     </div>
                     <button class="carousel-arrow carousel-prev" id="carouselPrev">&lsaquo;</button>
                     <button class="carousel-arrow carousel-next" id="carouselNext">&rsaquo;</button>
                     <div class="carousel-dots" id="carouselDots">
-                        <span class="carousel-dot active"></span>
-                        <span class="carousel-dot"></span>
-                        <span class="carousel-dot"></span>
+                        <span class="carousel-dot active" data-slide="0"></span>
+                        <span class="carousel-dot" data-slide="1"></span>
+                        <span class="carousel-dot" data-slide="2"></span>
                     </div>
                 </div>
             </div>
@@ -1454,69 +1458,38 @@
             });
         });
         
-        // Hero carousel
+        // Hero carousel - simple display toggle
         var currentSlide = 0;
         var totalSlides = 3;
-
-        function initCarousel() {
-            var viewport = document.querySelector('.carousel-viewport');
-            var track = document.getElementById('carouselTrack');
-            if (!viewport || !track) return;
-            var w = viewport.offsetWidth;
-            var slides = track.querySelectorAll('.carousel-slide');
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].style.width = w + 'px';
-                slides[i].style.minWidth = w + 'px';
-            }
-            updateCarousel();
-        }
-
-        function moveCarousel(dir) {
-            currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
-            updateCarousel();
-        }
+        var slides, dots;
 
         function goToSlide(n) {
-            currentSlide = n;
-            updateCarousel();
-        }
-
-        function updateCarousel() {
-            var viewport = document.querySelector('.carousel-viewport');
-            var track = document.getElementById('carouselTrack');
-            if (!viewport || !track) return;
-            var w = viewport.offsetWidth;
-            track.style.transform = 'translateX(-' + (currentSlide * w) + 'px)';
-            var dots = document.querySelectorAll('.carousel-dot');
-            for (var i = 0; i < dots.length; i++) {
-                if (i === currentSlide) {
-                    dots[i].classList.add('active');
-                } else {
-                    dots[i].classList.remove('active');
-                }
+            currentSlide = ((n % totalSlides) + totalSlides) % totalSlides;
+            if (!slides) slides = document.querySelectorAll('.carousel-slide');
+            if (!dots) dots = document.querySelectorAll('.carousel-dot');
+            for (var i = 0; i < totalSlides; i++) {
+                slides[i].classList.remove('active');
+                dots[i].classList.remove('active');
             }
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
         }
 
-        // Bind events
+        // Init - bind buttons and start
         (function() {
+            slides = document.querySelectorAll('.carousel-slide');
+            dots = document.querySelectorAll('.carousel-dot');
+
             var prevBtn = document.getElementById('carouselPrev');
             var nextBtn = document.getElementById('carouselNext');
-            if (prevBtn) prevBtn.onclick = function() { moveCarousel(-1); };
-            if (nextBtn) nextBtn.onclick = function() { moveCarousel(1); };
-            var dots = document.querySelectorAll('.carousel-dot');
-            for (var i = 0; i < dots.length; i++) {
-                (function(index) {
-                    dots[index].onclick = function() { goToSlide(index); };
-                })(i);
-            }
+            if (prevBtn) prevBtn.onclick = function() { goToSlide(currentSlide - 1); };
+            if (nextBtn) nextBtn.onclick = function() { goToSlide(currentSlide + 1); };
+
+            goToSlide(0); // show first slide
         })();
 
-        // Init on load
-        window.onload = initCarousel;
-        window.onresize = initCarousel;
-
         // Auto-play every 4s
-        setInterval(function() { moveCarousel(1); }, 4000);
+        setInterval(function() { goToSlide(currentSlide + 1); }, 4000);
     </script>
 
     <!-- Quote Modal -->
