@@ -267,8 +267,8 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        .carousel-prev { left: -12px; }
-        .carousel-next { right: -12px; }
+        .carousel-prev { left: 8px; }
+        .carousel-next { right: 8px; }
 
         .carousel-dots {
             display: flex;
@@ -1078,6 +1078,8 @@
                     </div>
                 </div>
                 <div class="hero-carousel">
+                    <button class="carousel-arrow carousel-prev" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-arrow carousel-next" onclick="moveCarousel(1)">&#10095;</button>
                     <div class="carousel-viewport">
                         <div class="carousel-track" id="carouselTrack">
                             <div class="carousel-slide"><img src="images/YD69.jpg" alt="Y69 Electric Strike"></div>
@@ -1085,8 +1087,6 @@
                             <div class="carousel-slide"><img src="images/YD69-SET.jpg" alt="Y69 Full Set"></div>
                         </div>
                     </div>
-                    <button class="carousel-arrow carousel-prev" onclick="moveCarousel(-1)">&#10094;</button>
-                    <button class="carousel-arrow carousel-next" onclick="moveCarousel(1)">&#10095;</button>
                     <div class="carousel-dots">
                         <span class="carousel-dot active" onclick="goToSlide(0)"></span>
                         <span class="carousel-dot" onclick="goToSlide(1)"></span>
