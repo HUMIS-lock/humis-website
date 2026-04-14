@@ -229,7 +229,7 @@
         }
 
         .carousel-slide {
-            min-width: 100%;
+            flex: 0 0 auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1458,6 +1458,19 @@
         var currentSlide = 0;
         var totalSlides = 3;
 
+        function initCarousel() {
+            var viewport = document.querySelector('.carousel-viewport');
+            var track = document.getElementById('carouselTrack');
+            if (!viewport || !track) return;
+            var w = viewport.offsetWidth;
+            var slides = track.querySelectorAll('.carousel-slide');
+            for (var i = 0; i < slides.length; i++) {
+                slides[i].style.width = w + 'px';
+                slides[i].style.minWidth = w + 'px';
+            }
+            updateCarousel();
+        }
+
         function moveCarousel(dir) {
             currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
             updateCarousel();
@@ -1469,9 +1482,11 @@
         }
 
         function updateCarousel() {
+            var viewport = document.querySelector('.carousel-viewport');
             var track = document.getElementById('carouselTrack');
-            if (!track) return;
-            track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+            if (!viewport || !track) return;
+            var w = viewport.offsetWidth;
+            track.style.transform = 'translateX(-' + (currentSlide * w) + 'px)';
             var dots = document.querySelectorAll('.carousel-dot');
             for (var i = 0; i < dots.length; i++) {
                 if (i === currentSlide) {
@@ -1482,7 +1497,7 @@
             }
         }
 
-        // Bind events immediately
+        // Bind events
         (function() {
             var prevBtn = document.getElementById('carouselPrev');
             var nextBtn = document.getElementById('carouselNext');
@@ -1495,6 +1510,10 @@
                 })(i);
             }
         })();
+
+        // Init on load
+        window.onload = initCarousel;
+        window.onresize = initCarousel;
 
         // Auto-play every 4s
         setInterval(function() { moveCarousel(1); }, 4000);
