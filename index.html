@@ -842,6 +842,44 @@
             display: flex;
         }
 
+        /* QR Modal */
+        .qr-modal-box {
+            position: relative;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .qr-modal-box img {
+            max-width: 320px;
+            max-height: 320px;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .qr-modal-box p {
+            margin: 12px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .qr-modal-close {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            line-height: 1;
+        }
+
+        .qr-modal-close:hover {
+            color: #333;
+        }
+
         .modal-content {
             background: white;
             padding: 40px;
@@ -1068,7 +1106,7 @@
                         </svg>
                         <span>WhatsApp</span>
                     </a>
-                    <img src="images/whatsapp-qr.jpg" alt="QR" style="width: 36px; height: 36px; border-radius: 4px; border: 1px solid #ddd; cursor: pointer;" onclick="document.getElementById('quoteModal').classList.add('active');">
+                    <img src="images/whatsapp-qr.jpg" alt="QR" style="width: 36px; height: 36px; border-radius: 4px; border: 1px solid #ddd; cursor: pointer;" onclick="openQrModal()">
                 </div>
                 <nav>
                         <a href="#featured">Y69 Strike</a>
@@ -1448,6 +1486,15 @@
         </a>
     </div>
 
+    <!-- QR Modal -->
+    <div class="modal-overlay" id="qrModal" onclick="closeQrModalOnBg(event)">
+        <div class="qr-modal-box">
+            <button class="qr-modal-close" onclick="closeQrModal()">&times;</button>
+            <img src="images/whatsapp-qr.jpg" alt="WhatsApp QR Code">
+            <p>Scan to chat on WhatsApp</p>
+        </div>
+    </div>
+
     <!-- Success Modal -->
     <div class="modal-overlay" id="successModal">
         <div class="modal-content">
@@ -1637,6 +1684,26 @@
                 submitBtn.disabled = false;
                 this.reset();
             }, 2000);
+        });
+
+        // QR Modal
+        function openQrModal() {
+            document.getElementById('qrModal').classList.add('active');
+        }
+
+        function closeQrModal() {
+            document.getElementById('qrModal').classList.remove('active');
+        }
+
+        function closeQrModalOnBg(e) {
+            if (e.target === document.getElementById('qrModal')) {
+                closeQrModal();
+            }
+        }
+
+        // ESC to close QR modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeQrModal();
         });
     </script>
 </body>
