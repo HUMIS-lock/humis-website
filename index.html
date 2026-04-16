@@ -15,6 +15,31 @@
         gtag('config', 'GA_MEASUREMENT_ID');
     </script>
 
+    <!-- Carousel JS - must be in head for inline onclick to work -->
+    <script>
+        var _carouselIndex = 0;
+        var _carouselTotal = 3;
+        function carouselPrev() {
+            _carouselIndex = ((_carouselIndex - 1) + _carouselTotal) % _carouselTotal;
+            _carouselShow();
+        }
+        function carouselNext() {
+            _carouselIndex = (_carouselIndex + 1) % _carouselTotal;
+            _carouselShow();
+        }
+        function _carouselShow() {
+            var s = document.querySelectorAll('.carousel-slide');
+            var d = document.querySelectorAll('.carousel-dot');
+            if (!s.length) return;
+            for (var i = 0; i < s.length; i++) {
+                s[i].className = 'carousel-slide';
+                d[i].className = 'carousel-dot';
+            }
+            s[_carouselIndex].className = 'carousel-slide active';
+            d[_carouselIndex].className = 'carousel-dot active';
+        }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1088,8 +1113,8 @@
                             <div class="carousel-slide" data-slide="2"><img src="images/YD69-SET.jpg" alt="Y69 Full Set"></div>
                         </div>
                     </div>
-                    <button class="carousel-arrow carousel-prev" id="carouselPrev">&lsaquo;</button>
-                    <button class="carousel-arrow carousel-next" id="carouselNext">&rsaquo;</button>
+                    <button class="carousel-arrow carousel-prev" id="carouselPrev" onclick="carouselPrev()">&#10094;</button>
+                    <button class="carousel-arrow carousel-next" id="carouselNext" onclick="carouselNext()">&#10095;</button>
                     <div class="carousel-dots" id="carouselDots">
                         <span class="carousel-dot active" data-slide="0"></span>
                         <span class="carousel-dot" data-slide="1"></span>
@@ -1457,39 +1482,6 @@
                 }
             });
         });
-        
-        // Hero carousel - simple display toggle
-        var currentSlide = 0;
-        var totalSlides = 3;
-        var slides, dots;
-
-        function goToSlide(n) {
-            currentSlide = ((n % totalSlides) + totalSlides) % totalSlides;
-            if (!slides) slides = document.querySelectorAll('.carousel-slide');
-            if (!dots) dots = document.querySelectorAll('.carousel-dot');
-            for (var i = 0; i < totalSlides; i++) {
-                slides[i].classList.remove('active');
-                dots[i].classList.remove('active');
-            }
-            slides[currentSlide].classList.add('active');
-            dots[currentSlide].classList.add('active');
-        }
-
-        // Init - bind buttons and start
-        (function() {
-            slides = document.querySelectorAll('.carousel-slide');
-            dots = document.querySelectorAll('.carousel-dot');
-
-            var prevBtn = document.getElementById('carouselPrev');
-            var nextBtn = document.getElementById('carouselNext');
-            if (prevBtn) prevBtn.onclick = function() { goToSlide(currentSlide - 1); };
-            if (nextBtn) nextBtn.onclick = function() { goToSlide(currentSlide + 1); };
-
-            goToSlide(0); // show first slide
-        })();
-
-        // Auto-play every 4s
-        setInterval(function() { goToSlide(currentSlide + 1); }, 4000);
     </script>
 
     <!-- Quote Modal -->
